@@ -41,14 +41,13 @@ const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
     }, [dataType]);
 
     function getDataFromApi() {
-        fetch(`item/${dataType}`)
-            .then((results) => {
-                return results.json();
-            })
-            .then(data => {
-
-                setItems(data);
-            })
+        fetch("https://localhost:7045/api/Item")
+        .then((results) => results.json())
+        .then(data => {
+            setItems(data);
+            console.log("Data:", data);
+        })
+        .catch((error) => console.log("Error:", error));
     }
 
     useEffect(() => {
